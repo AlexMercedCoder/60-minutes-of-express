@@ -1,4 +1,13 @@
 <%- include('../partials/head') %>
+<div x-data="{show: false}">
 
-<h1><%= pig.name %></h1>
-<h2><%= pig.age %></h2>
+    <h1 x-on:click="show = !show"><%= pig.name %></h1>
+    <h2 x-show="show"><%= pig.age %></h2>
+
+</div>
+
+
+<a href="/pigs/edit/<%=index%>"><button>Edit</button></a>
+<form action="/pigs/<%=index%>?_method=delete" method=post>
+<input type="submit" value="delete">
+</form>

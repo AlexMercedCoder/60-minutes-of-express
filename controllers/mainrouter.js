@@ -25,7 +25,8 @@ router.all("*", (req, res) => {
         headers: req.headers,
         url: req.url,
         host: req.hostname,
-        method: req.method
+        method: req.method,
+        context: req.context
     })
 
 })

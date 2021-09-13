@@ -1,0 +1,7 @@
+<%- include('../partials/head') %>
+
+<form action="/pigs/<%=index%>?_method=put" method="post">
+  <label>NAME: <input type="text" name="name" value="<%= pig.name %>" /></label>
+  <label>AGE: <input type="number" name="age" value="<%= pig.age %>" /></label>
+  <input type="submit" value="Update Pig" />
+</form>

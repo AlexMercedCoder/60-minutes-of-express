@@ -2,13 +2,15 @@
 
 <h1>Our Pigs</h1>
 
+<a href="/pigs/new"><button>Create a Pig</button></a>
+
 <ul>
-    <% for (pig of pigs) { %>
+    <% pigs.forEach((pig, index) => { %>
     
         <li>
-            <h2><%= pig.name %></h2>
+            <a href="/pigs/<%= index %>"><h2><%= pig.name %></h2></a>
             <h3><%= pig.age %></h3>
         </li>
     
-    <% } %>
+    <% }) %>
 </ul>
