@@ -5,9 +5,17 @@
     <h2 x-show="show"><%= pig.age %></h2>
 
 </div>
+<div id="form">
+
+</div>
 
 
-<a href="/pigs/edit/<%=index%>"><button>Edit</button></a>
+<button hx-get="/pigs/edit/<%=index%>" hx-trigger="click" hx-target="#form" hx-swap="innerHTML">Edit</button>
+
+
+
+
+
 <form action="/pigs/<%=index%>?_method=delete" method=post>
 <input type="submit" value="delete">
 </form>
