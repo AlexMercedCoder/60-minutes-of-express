@@ -1,0 +1,14 @@
+<%- include('../partials/head') %>
+
+<h1>Our Pigs</h1>
+
+<ul>
+    <% for (pig of pigs) { %>
+    
+        <li>
+            <h2><%= pig.name %></h2>
+            <h3><%= pig.age %></h3>
+        </li>
+    
+    <% } %>
+</ul>

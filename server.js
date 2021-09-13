@@ -2,46 +2,27 @@
 // Setup - Import deps and create app object
 ////////////////////////////////
 import dotenv from "dotenv"
-dotenv.config()
 import express from "express"
+import middleware from "./middleware/mid.js"
+import MainRouter from "./controllers/mainrouter.js"
+import PigsRouter from "./controllers/pigs.js"
+
+dotenv.config()
 const WebServer = express()
-import morgan from "morgan"
 
 ////////////////////////////////////////////
 // Declare Middleware
 ///////////////////////////////////////////
-WebServer.use(express.static("public"))
-WebServer.use(morgan("tiny"))
-
-
+middleware(WebServer)
 
 ///////////////////////////////////////////
 // Declare Routes and Routers
 //////////////////////////////////////////
-// get route to /cheese
-WebServer.get("/cheese", (req, res) => {
-    res.send(process.env.CHEESE)
-})
-
-WebServer.get("/render/:variable", (req, res) => {
-    res.render("render.ejs", {v: req.params.variable, q: req.query})
-})
-
-// // CATCH ALL ROUTE
-// WebServer.all("*", (req, res) => {
-
-//     res.json({
-//         headers: req.headers,
-//         url: req.url,
-//         host: req.hostname,
-//         method: req.method
-//     })
-
-// })
+WebServer.use("/pigs", PigsRouter)
+WebServer.use("/", MainRouter) // main router
 
 ////////////////////////////////////////
 // Server Listener
 ///////////////////////////////////////
-
 
 WebServer.listen(7777, () => console.log("Web Server is Listening on Port 7777"))
